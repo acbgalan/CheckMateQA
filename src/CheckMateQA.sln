@@ -5,11 +5,11 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheckMateQA.Web", "CheckMateQA.Web\CheckMateQA.Web.csproj", "{475EB8C7-F23D-48B1-A6B9-3C1BCC3B748A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckMateQA.DataAccess", "CheckMateQA.DataAccess\CheckMateQA.DataAccess.csproj", "{E558E5FD-0EB6-43FE-AAF4-FE4A79229FC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheckMateQA.DataAccess", "CheckMateQA.DataAccess\CheckMateQA.DataAccess.csproj", "{E558E5FD-0EB6-43FE-AAF4-FE4A79229FC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckMateQA.Models", "CheckMateQA.Models\CheckMateQA.Models.csproj", "{78A6104E-E9E9-4DF5-BA67-C4018BCC578B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheckMateQA.Models", "CheckMateQA.Models\CheckMateQA.Models.csproj", "{78A6104E-E9E9-4DF5-BA67-C4018BCC578B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckMateQA.Services", "CheckMateQA.Services\CheckMateQA.Services.csproj", "{9A6F106F-B277-416C-B5C4-93EA771AB9E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheckMateQA.Services", "CheckMateQA.Services\CheckMateQA.Services.csproj", "{9A6F106F-B277-416C-B5C4-93EA771AB9E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

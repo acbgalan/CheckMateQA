@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CheckMateQA.Models
 {
-    public class ResponseService
+    public class ServiceResponse
     {
         public bool Success { get; set; }
         public string Message { get; set; }

@@ -16,6 +16,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CheckMateQA.DataAccess\CheckMateQA.DataAccess.csproj" />
+    <ProjectReference Include="..\CheckMateQA.Models\CheckMateQA.Models.csproj" />
+    <ProjectReference Include="..\CheckMateQA.Services\CheckMateQA.Services.csproj" />
   </ItemGroup>
 
 </Project>

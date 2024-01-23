@@ -32,6 +32,6 @@ namespace CheckMateQA.Models.DTO
         [Compare("Password", ErrorMessage = "Las contraseñas no son iguales")]
         public string PasswordConfirm { get; set; }
 
-
+        public string Role { get; set; }
     }
 }

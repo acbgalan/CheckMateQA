@@ -1,7 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using CheckMateQA.DataAccess.Data;
 using CheckMateQA.Models;
+using CheckMateQA.Services;
+using CheckMateQA.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using CheckMateQA.Servicess;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +17,8 @@ builder.Services.AddDbContext<AuthentificationContext>(options => options.UseSql
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<AuthentificationContext>()
     .AddDefaultTokenProviders();
-builder.Services.ConfigureApplicationCookie(options => options.LoginPath = "/Account/Login"); ;
+builder.Services.ConfigureApplicationCookie(options => options.LoginPath = "/Account/Login");
+builder.Services.AddScoped<IUserAuthentification, UserAuthentification>();
 
 var app = builder.Build();
 

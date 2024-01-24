@@ -15,6 +15,34 @@ namespace CheckMateQA.Web.Controllers
             _userAuthentification = userAuthentification;
         }
 
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> LoginAsync(LoginDTO loginDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(loginDTO);
+            }
+
+            ServiceResponse result = await _userAuthentification.LoginAsync(loginDTO);
+
+            if (result.Success)
+            {
+                TempData["success"] = result.Message;
+            }
+            else
+            {
+                TempData["error"] = result.Message;
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
+
 
         public async Task<string> Register()
         {

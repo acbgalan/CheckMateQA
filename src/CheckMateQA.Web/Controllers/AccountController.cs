@@ -3,6 +3,7 @@
 using CheckMateQA.Services.Interfaces;
 using CheckMateQA.Models.DTO;
 using CheckMateQA.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CheckMateQA.Web.Controllers
 {
@@ -66,6 +67,23 @@ namespace CheckMateQA.Web.Controllers
             {
                 return $"{DateTime.Now} - {result.Message}";
             }
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Logout()
+        {
+            ServiceResponse result = await _userAuthentification.LogoutAsync();
+
+            if (result.Success)
+            {
+                TempData["success"] = result.Message;
+            }
+            else
+            {
+                TempData["error"] = result.Message;
+            }
+
+            return RedirectToAction("Index", "Home");
         }
 
     }

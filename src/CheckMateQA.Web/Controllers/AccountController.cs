@@ -45,28 +45,34 @@ namespace CheckMateQA.Web.Controllers
         }
 
 
-        public async Task<string> Register()
+        public IActionResult Register()
         {
-            RegistrationDTO registration = new RegistrationDTO()
-            {
-                Name = "Carlos Blanco",
-                Email = "cblanco@mail.com",
-                Username = "cblanco",
-                Password = "P@ssw0rd!",
-                PasswordConfirm = "ssw0rd!",
-                Role = "Administrator"
-            };
+            return View();
+        }
 
-            ServiceResponse result = await _userAuthentification.RegisterAsync(registration);
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegistrationDTO registrationDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(registrationDTO);
+            }
+
+            registrationDTO.Role = string.IsNullOrWhiteSpace(registrationDTO.Role) ? "Guest" : registrationDTO.Role;
+
+            ServiceResponse result = await _userAuthentification.RegisterAsync(registrationDTO);
 
             if (result.Success)
             {
-                return $"{DateTime.Now} - {result.Message}";
+                TempData["success"] = result.Message;
             }
             else
             {
-                return $"{DateTime.Now} - {result.Message}";
+                TempData["error"] = result.Message;
             }
+
+            return RedirectToAction("Index", "Home");
         }
 
         [Authorize]

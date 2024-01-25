@@ -128,10 +128,8 @@ namespace CheckMateQA.Servicess
             {
                 await _roleManager.CreateAsync(new IdentityRole() { Name = model.Role });
             }
-            else
-            {
-                await _userManager.AddToRoleAsync(user, model.Role);
-            }
+
+            await _userManager.AddToRoleAsync(user, model.Role);
 
             svrResponse.Success = true;
             svrResponse.Message = "Usuario registrado con exito";

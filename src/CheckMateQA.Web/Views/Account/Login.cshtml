@@ -1,0 +1,37 @@
+﻿@model CheckMateQA.Models.DTO.LoginDTO
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+<div class="row">
+    <div class="col-4">
+        <form asp-controller="Account" asp-action="Login" method="post">
+            <div class="mb-3">
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></i></span>
+                    <input asp-for="Username" class="form-control" placeholder="Usuario" aria-label="Usuario" aria-describedby="basic-addon1" />
+                </div>
+                <span asp-validation-for="Username" class="text-danger" style="padding-left:54px;"></span>
+            </div>
+            <div class="mb-3">
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon2"><i class="bi bi-key"></i></span>
+                    <input asp-for="Password" type="password" class="form-control" placeholder="Contraseña" aria-label="Contraseña" aria-describedby="basic-addon2" />
+                </div>
+                <span asp-validation-for="Password" class="text-danger" style="padding-left:54px;"></span>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

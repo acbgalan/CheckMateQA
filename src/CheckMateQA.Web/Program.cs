@@ -11,11 +11,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<AuthentificationContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Authentification")));
+builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ApplicationDefault")));
 
 //Identity configuration
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-    .AddEntityFrameworkStores<AuthentificationContext>()
+    .AddEntityFrameworkStores<ApplicationContext>()
     .AddDefaultTokenProviders();
 builder.Services.ConfigureApplicationCookie(options => options.LoginPath = "/Account/Login");
 builder.Services.AddScoped<IUserAuthentification, UserAuthentification>();

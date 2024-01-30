@@ -19,5 +19,12 @@ namespace CheckMateQA.Web.Controllers
 
             return View(companies);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+
     }
 }

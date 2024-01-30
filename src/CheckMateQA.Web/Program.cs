@@ -1,24 +1,27 @@
-using Microsoft.EntityFrameworkCore;
 using CheckMateQA.DataAccess.Data;
+using CheckMateQA.DataAccess.Repository;
+using CheckMateQA.DataAccess.Repository.Interfaces;
 using CheckMateQA.Models;
-using CheckMateQA.Services;
 using CheckMateQA.Services.Interfaces;
-using Microsoft.AspNetCore.Identity;
 using CheckMateQA.Servicess;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<AuthentificationContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Authentification")));
+builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ApplicationDefault")));
+builder.Services.AddScoped<IUserAuthentification, UserAuthentification>();
+builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
 
 //Identity configuration
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-    .AddEntityFrameworkStores<AuthentificationContext>()
+    .AddEntityFrameworkStores<ApplicationContext>()
     .AddDefaultTokenProviders();
 builder.Services.ConfigureApplicationCookie(options => options.LoginPath = "/Account/Login");
-builder.Services.AddScoped<IUserAuthentification, UserAuthentification>();
+
 
 var app = builder.Build();
 

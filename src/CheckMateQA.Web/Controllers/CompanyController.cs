@@ -97,5 +97,33 @@ namespace CheckMateQA.Web.Controllers
 
             return RedirectToAction("Index", "Company");
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var company = await _companyRepository.GetAsync(id);
+
+            if (company == null)
+            {
+                return NotFound();
+            }
+
+            await _companyRepository.DeleteAsync(company);
+            int saveResult = await _companyRepository.SaveASync();
+
+            if (saveResult > 0)
+            {
+                TempData["success"] = "Empresa creado con exito";
+            }
+            else
+            {
+                TempData["error"] = "Error al crear nueva empresa";
+            }
+
+            return RedirectToAction("Index", "Company");
+        }
+
+
     }
 }

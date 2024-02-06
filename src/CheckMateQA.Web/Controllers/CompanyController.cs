@@ -124,6 +124,22 @@ namespace CheckMateQA.Web.Controllers
             return RedirectToAction("Index", "Company");
         }
 
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var company = await _companyRepository.GetAsync((int)id);
+
+            if (company == null)
+            {
+                return NotFound();
+            }
+
+            return View(company);
+        }
 
     }
 }
